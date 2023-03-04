@@ -1,0 +1,23 @@
+
+:root {
+    --color-primario: #27187E;
+    --color-secundario: #758BFD;
+    --color-letra: #F1F2F6;
+    --letra-gris: #222;
+    --color-tercero: #aeb8fe;
+    --color-dorado: #FF8600;
+  }
+
+  .App {
+    text-align: center;
+    background-image: url(http://localhost:3001/uploads/bac.png);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+.padding-top-8{
+  padding-top: 80px;
+  padding-bottom: 30px;
+}
+

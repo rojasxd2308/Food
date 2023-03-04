@@ -1,0 +1,98 @@
+@import '../global.css';
+
+.formulario{
+    background-color: var(--color-primario);
+    width: 50%;
+    margin: auto;
+    padding: 20px 0px;
+    color: var(--color-letra);
+    border-radius: 10px;
+}
+.formulario .elemento{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center
+}
+.cien{
+    width: 100%;
+}
+.setenta{
+    width: 100%;
+}
+.elemento h4{
+    background-color: var(--color-dorado);
+    padding: 15px;
+    color: black;
+}
+.elemento textarea{
+    width: 70%;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.elemento .paso{
+    width: 80%;
+}
+.elemento input{
+    border-radius: 5px;
+    margin: 10px;
+    padding: 7px;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .custom-file-upload:hover {
+    background-color: #ccc;
+  }
+
+  
+input[type="file"] {
+    display: none;
+  }
+
+  .el-dietas{
+    justify-content: left!important;
+   
+  }
+  .dieta_2 {
+    padding-left: 10%;
+    margin-left: 0px;
+    width: 40%;
+    align-items: center;
+    display: flex;
+}
+
+.subir {
+    background-color: var(--color-dorado); 
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
+  }
+.elemento .subir:hover{
+    font-weight: bold;
+    background-color: var(--color-dorado);
+    border: none;
+}
+.subir:hover {
+    background-color: var(--color-primario);
+    border: solid var(--color-dorado);
+    font-weight: bold;
+  }
