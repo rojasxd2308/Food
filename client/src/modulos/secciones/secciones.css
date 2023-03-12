@@ -1,0 +1,157 @@
+@import '../global.css';
+
+
+.seccion img{
+        width: 300px;
+        max-height: 250px;
+}
+.seccion {
+    background-color: --color-primario;   
+}
+
+
+.lista-dietas{
+    list-style: none;
+}
+.container{
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 100vh;
+}
+.tSecciones{
+    color: var(--color-letra);
+    background-color: var(--color-dorado);
+    margin: 10px 0;
+    padding: 20px 0;
+}
+.opciones {
+    background-color: var(--color-dorado);
+    width: 70%;
+    margin: auto;
+    border-radius: 25px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.opciones h2{
+    width: 100%;
+    background-color: var(--color-primario);
+    padding: 10px 0px;
+    color: var(--color-letra);
+
+}
+.opciones .elemento{
+    width:  50%;
+}
+.seccion{
+    margin: auto;
+    width: 250px;
+    border: 1px black solid;
+    border-radius: 10%;
+    overflow: hidden;
+    padding-bottom: 10px;
+    background-color: var(--color-dorado);
+}
+.seccion img{
+    width: 100%;
+}
+
+ul.lista-dietas {
+    padding: 0;
+}
+.seccion {
+    position: relative; /* Necesario para posicionar los datos */
+    overflow: hidden; 
+    margin: 20px;/* Oculta el contenido que sobresale */
+  }
+  
+  .datos {
+    position: absolute;
+    bottom: -100%; /* Esconde los datos por debajo de la sección */
+    width: 100%;
+    background-color: var(--color-tercero);
+    transition: bottom 0.3s ease-in-out; /* Transición suave */
+  }
+  .seccion h4{
+    padding: 0px 15px;
+  }
+  
+  .seccion:hover .datos {
+    bottom: 0; /* Muestra los datos */
+  }
+.seccion .padding-1{
+    padding: 10px 0;
+    background-color: var(--color-primario);
+}
+.padding-1 a{
+    text-decoration: none;
+    color: var(--color-letra);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+       
+}
+.padding-1 a:hover{
+    font-weight: bold;
+    color: var(--color-tercero);       
+}
+
+
+
+
+/* para las opciones def seccion , creo que no funciona */
+
+.opciones select{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: var(--color-secundario);
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.opciones select option{
+    background-color: var(--color-tercero);
+    padding: 7px;
+    font-size: 12px;
+
+}
+
+.opciones select option:hover{
+    background-color: var(--color-secundario);
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+
+/*para el navegador */
+.navigation {
+    background-color: aliceblue;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+.navigation ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.navigation li{
+    padding: 4px;
+    border-radius: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;    
+}
+.disabled{
+    color: gray;
+}
+.previous:hover,.next:hover{
+    text-decoration: underline;
+}
+.navigation .selected{
+    background-color: var(--color-tercero);
+}

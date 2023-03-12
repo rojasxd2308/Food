@@ -1,0 +1,44 @@
+@import '../global.css';
+footer {
+    background-color: var(--color-dorado);
+    color: var(--color-letra);
+
+}
+
+.foot-container {
+   width: 100%;
+   margin: -10px auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.col-md-4 {
+    flex-basis: 30.33%;
+    padding: 0px 15px;
+}
+
+footer h4 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: black;
+}
+
+footer p {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+ .social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.fa{
+    font-size: 24px;
+    color: #666;
+}

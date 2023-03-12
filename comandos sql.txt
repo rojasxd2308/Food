@@ -1,0 +1,19 @@
+/* create DATABASE food*/
+
+
+/*
+
+create table recipe(
+    Id serial primary key ,
+    Nombre text,
+    Imagen text ,
+    Resumen text ,
+    Nivel text,
+    Pasos text
+)*/
+/*
+CREATE TABLE diets(
+    Id serial PRIMARY KEY,
+    Nombre text
+)*/
+ drop table recipe
