@@ -42,10 +42,11 @@ function SearchBar(props) {
       // arreglo temporal ya organizado
       setTempDivided(organizado)
     }
-  },[paginate,tempAll])
+  },[tempAll,paginate])
 
 
   function handleOptions(e) {
+    console.log(e.target.name + " : " + e.target.value);
    if (e.target.name === 'ordenamientoH') {
     setOptions({
         ...options,

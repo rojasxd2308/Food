@@ -30,9 +30,6 @@ function SearchBar(props) {
   }, [entradaRef, resultadoRef]);
 
   const [lista_res, setLista] = React.useState([]);
-  useEffect(() => {
-    console.log(lista_res);
-  }, [lista_res]);
   const { all } = props;
   function actualizando(e) {
     setLista([]);

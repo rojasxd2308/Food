@@ -17,7 +17,7 @@ function App(props) {
     consulta_global().then((res)=>{
         consulta_all(res)
     }).then(()=>{
-      console.log(all.length);
+      //console.log(all.length);
     })
   }, [all.length, consulta_all]);
   return (

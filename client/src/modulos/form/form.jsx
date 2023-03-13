@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { get_diets } from "../../functions/search";
 import { newRecipe } from "../../functions/search";
+import validando from "../../functions/validateImage";
 import "./form.css"
 export default function Form(params) {
   /// para redireccionar
@@ -24,7 +25,6 @@ export default function Form(params) {
   //agregando un contador para dietas
   let x = 0;
   const [dietasSelected, setDietasSelected] = useState([]);
-  const [formValido, setFormValido] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     summary: "",
@@ -42,16 +42,6 @@ export default function Form(params) {
       },
     ]);
   }
-  /*useEffect(() => {
-    // Verificar si todos los campos requeridos tienen valores
-    const formValido =      Object.values(formData).every(
-        (value) =>
-          (typeof value === "string" && value.trim().length > 0) ||
-          (Array.isArray(value) && value.length > 0)
-      ) && pasos.every((paso) => paso.step.trim().length > 0);
-    setFormValido(formValido);
-  }, [formData, pasos]);*/
-
   function actualizar_pasos(e) {
     const id = parseInt(e.target.name);
     const value = e.target.value;
@@ -81,8 +71,14 @@ export default function Form(params) {
       }
     }
     const dietValue = dietasSelected.length > 0 ? [...dietasSelected] : [];
-    const inputValue = type === "file" ? files[0] : type === "range" ? value : dietValue.length > 0 ? dietValue : value;
-
+    let inputValue = type === "file" ? files[0] : type === "range" ? value : dietValue.length > 0 ? dietValue : value;
+    if (type === "file") {
+      if(!validando(files[0])){
+        alert('Por favor, seleccione una imagen válida');
+        inputValue = ''   
+      }
+    }
+    
     console.log(type, inputValue);
     setFormData({
       ...formData,
@@ -190,12 +186,12 @@ export default function Form(params) {
         <h4 className="cien">Detalla los pasos para tu receta</h4>
         {pasos.map((el) => {
           return (
-            <div className="cien">
+            <div key={el.id} className="cien">
               <span>{el.id + "° paso: "}</span>
               <input
                 className="paso"
                 type="text"
-                key={el.id}
+                
                 name={el.id}
                 onChange={actualizar_pasos}
               />
@@ -214,7 +210,7 @@ export default function Form(params) {
           id="imagen-input"
           onChange={handleInputChange}
         />
-        <label for="imagen-input" class="custom-file-upload">
+        <label for="imagen-input" className="custom-file-upload">
           {formData.imagen ? formData.imagen.name : " Seleccionar archivo"}
         </label>
       </div>

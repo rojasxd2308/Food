@@ -14,7 +14,7 @@ export default function Detail(params) {
         console.log(datos.analyzedInstructions)
       });
     }
-  }, [id,datos]);
+  }, [id]);
 
   return (
     <div className="detail-container">

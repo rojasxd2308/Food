@@ -56,7 +56,7 @@ export function organizar(recetas, opciones) {
           break;
         }
         
-        console.log(recetas);
+        //console.log(recetas);
   //primero filtrado por cantidad
   var resultado = recetas.slice(0, cantidad);
   
@@ -68,7 +68,7 @@ export function dividir(recetas_org, opciones) {
   const inicio = parseInt(opciones.inicio)
   const espacio= parseInt(opciones.espacio)
   let resultado = []
-  console.log("lon:"+long_recetas ,"i" + inicio ,!"e" + espacio);
+  //console.log("lon:"+long_recetas ,"i" + inicio ,!"e" + espacio);
   if (inicio>long_recetas) {
     console.log("no habria nada que mostrar");
     resultado = recetas_org
@@ -86,6 +86,7 @@ export function dividir(recetas_org, opciones) {
 
 //// para obtener detalles de una receta
 export async function detalles_receta(id) {
+  console.log("peticion detalles");
   try {
     const response = await fetch(`http://localhost:3001/recipes/${id}`);
     const data = await response.json();
@@ -94,6 +95,7 @@ export async function detalles_receta(id) {
     console.log(e);
     return { error: "no hay internet" };
   }
+  
 }
 /////// obtener los tipos de dietas
 export async function get_diets(id) {
@@ -140,8 +142,6 @@ export function newRecipe(recetas, pasos) {
 }
 /// 
 export const consulta_global = async () => {
-
-  console.log("encontrado");
   try {
     const response = await fetch(`http://localhost:3001/recipes`);
     const data = await response.json();
