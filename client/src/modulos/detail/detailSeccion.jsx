@@ -14,7 +14,7 @@ export default function Detail(params) {
         console.log(datos.analyzedInstructions)
       });
     }
-  }, []);
+  }, [id,datos]);
 
   return (
     <div className="detail-container">
@@ -35,8 +35,8 @@ export default function Detail(params) {
         <h3>Tipo de dietas:</h3>
         <ul>
           {datos.diets &&
-            datos.diets.map((el) => {
-              return <li>{el}</li>;
+            datos.diets.map((el, index) => {
+              return <li key={index}>{el}</li>;
             })}
         </ul>
       </div>
@@ -45,9 +45,9 @@ export default function Detail(params) {
         {datos.analyzedInstructions &&
           datos.analyzedInstructions[0].steps.map((el) => {
             return (
-              <div className="pasos">
+              <div key={el.number+1} className="pasos">
                 <span className="bold">
-                  {el.number} {".- "}
+                  {el.number+1} {".- "}
                     </span>
                    {el.step}
               </div>

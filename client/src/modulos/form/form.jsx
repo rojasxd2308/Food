@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import { get_diets } from "../../functions/search";
 import { newRecipe } from "../../functions/search";
-
+import "./form.css"
 export default function Form(params) {
+  /// para redireccionar
+  const navigate = useNavigate();
+  //////
+
   const [pasos, setPasos] = useState([
     {
       id: 1,
@@ -36,7 +42,7 @@ export default function Form(params) {
       },
     ]);
   }
-  useEffect(() => {
+  /*useEffect(() => {
     // Verificar si todos los campos requeridos tienen valores
     const formValido =      Object.values(formData).every(
         (value) =>
@@ -44,7 +50,7 @@ export default function Form(params) {
           (Array.isArray(value) && value.length > 0)
       ) && pasos.every((paso) => paso.step.trim().length > 0);
     setFormValido(formValido);
-  }, [formData, pasos]);
+  }, [formData, pasos]);*/
 
   function actualizar_pasos(e) {
     const id = parseInt(e.target.name);
@@ -92,7 +98,6 @@ export default function Form(params) {
 
   function handleSubmit() {
     // validando campos
-
     let emptyFields = [];
 
     if (!formData.name) {
@@ -116,7 +121,12 @@ export default function Form(params) {
         `Completa los siguientes campos primero: ${emptyFields.join(", ")}`
       );
     } else {
-      console.log(newRecipe(formData, pasos));
+      newRecipe(formData, pasos).then((res)=>{
+
+          //console.log(res);
+          navigate(`/detail/${res.id}`);
+      });
+
     }
   }
 

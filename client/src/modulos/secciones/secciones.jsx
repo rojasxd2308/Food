@@ -1,16 +1,17 @@
 import "./secciones.css";
-import { connect, Connect } from "react-redux";
+import { connect} from "react-redux";
 import React, { useEffect, useState } from "react";
 import Seccion from "./seccion";
 import { organizar,dividir } from "../../functions/search";
-import ReactPaginate from "react-paginate";
+
+
+import Paginacion from "../paginado/paginacion";
 
 
 
 
 function SearchBar(props) {
   const { all } = props;
-  let pageCount = "7";
   const [tempAll, setTempAll] = useState([]);
   const [tempDivided, setTempDivided] = useState([]);
   const [options, setOptions] = useState({
@@ -45,21 +46,21 @@ function SearchBar(props) {
 
 
   function handleOptions(e) {
-   if (e.target.name == 'ordenamientoH') {
+   if (e.target.name === 'ordenamientoH') {
     setOptions({
         ...options,
         ordenamientoH: e.target.value,
         ordenamientoN: '0'
       });
    }
-   if (e.target.name == 'ordenamientoN') {
+   if (e.target.name === 'ordenamientoN') {
     setOptions({
         ...options,
         ordenamientoN: e.target.value,
         ordenamientoH: '0'
       });
    }
-   if (e.target.name == 'cantidad') {
+   if (e.target.name === 'cantidad') {
     setOptions({
         ...options,
         cantidad: e.target.value,
@@ -90,8 +91,8 @@ function SearchBar(props) {
         <div className="elemento">
 
         <label htmlFor="">Por nivel de salud : </label>
-        <select name="ordenamientoH" id="" onChange={handleOptions}>
-          <option value="1" selected="selected">
+        <select name="ordenamientoH" defaultValue={options.ordenamientoH} id="" onChange={handleOptions}>
+          <option value="1" >
             Mayor a menor
           </option>
           <option value="2">Menor a mayor</option>
@@ -101,8 +102,8 @@ function SearchBar(props) {
           
         <div className="divisor"></div>
         <label htmlFor=""> Alfabéticamente : </label>
-        <select name="ordenamientoN" id="" onChange={handleOptions}>
-          <option value="2" selected="selected">
+        <select name="ordenamientoN" defaultValue={options.ordenamientoN} id="" onChange={handleOptions}>
+          <option value="2">
             de A a la Z
           </option>
           <option value="1">de Z a la A</option>
@@ -111,9 +112,9 @@ function SearchBar(props) {
         <div className="elemento">
 
         <label htmlFor="">Número de resultados</label>
-        <select name="cantidad" id="" onChange={handleOptions}>
+        <select name="cantidad" id="" defaultValue={options.cantidad} onChange={handleOptions}>
           <option value="10">10</option>
-          <option value="15" selected="selected">
+          <option value="15" >
             15
           </option>
           <option value="20">20</option>
@@ -124,9 +125,9 @@ function SearchBar(props) {
     <div className="elemento">
 
         <label htmlFor="">Opciones de paginacion: </label>
-        <select name="cantidadP" id="" onChange={handlePaginate}>
+        <select name="cantidadP" id="" defaultValue={paginate.espacio} onChange={handlePaginate}>
           <option value="5">5</option>
-          <option value="10" selected="selected">
+          <option value="10" >
             10
           </option>
           <option value="15">15</option>
@@ -140,17 +141,8 @@ function SearchBar(props) {
         return <Seccion id={el.id} key={el.id} />;
       })}
       </div>
-
       <div className="navigation">
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel="Siguiente >"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={paginate.espacio}
-          pageCount={options.cantidad/paginate.espacio}
-          previousLabel="< Anterior"
-          renderOnZeroPageCount={null}
-        />
+      <Paginacion options={options}  paginate={paginate} handlePageClick={handlePageClick}/>
       </div>
     </div>
   );

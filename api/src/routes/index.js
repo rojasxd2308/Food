@@ -298,6 +298,7 @@ router.post("/recipes", async (req, res) => {
   const nombre = req.body.name;
   const summary = req.body.summary;
   const nivel = req.body.healtScore;
+  let id_nuevareceta;
   //const steps = req.body.steps;
   const receta = req.body;
   const steps = [];
@@ -328,7 +329,7 @@ router.post("/recipes", async (req, res) => {
 
       // insert a tabla intermedia
       // consulta id del receta
-
+      id_nuevareceta = nueva_Receta.id
       //
       dividido = diets.split(",");
       //console.log(nueva_Receta);
@@ -368,7 +369,9 @@ router.post("/recipes", async (req, res) => {
               console.log("Ocurrió un error al crear la relación:", error);
             });
         });
-      } catch (error) {}
+      } catch (error) {
+        console.log(error.name);
+      }
       // insertando pasos
     }
   } catch (e) {
@@ -377,7 +380,7 @@ router.post("/recipes", async (req, res) => {
   // Move the uploaded image to our upload folder
   image.mv(__dirname + "/uploads/" + image.name);
 
-  res.json(req.body);
+  res.json({...req.body,id: id_nuevareceta});
 });
 
 module.exports = router;

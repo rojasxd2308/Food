@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-// muy lento
+// es muy lento
 /*export const handleSearch = async () => {
     let nombre = "flower"
    console.log("encontrado");
@@ -120,12 +120,10 @@ export function newRecipe(recetas, pasos) {
   const data = {
     ...recetas,
   };
-
   // todo data al formData
   for (let key in data) {
     formData.append(key, data[key]);
   }
-
   const config = {
     headers: {
       "Content-Type": "multipart/form-data",
@@ -133,7 +131,6 @@ export function newRecipe(recetas, pasos) {
   };
   return axios.post(url, formData, config)
     .then((response) => {
-      console.log(response.data);
       return response.data;
     })
     .catch((error) => {
@@ -141,7 +138,7 @@ export function newRecipe(recetas, pasos) {
       throw error;
     });
 }
-
+/// 
 export const consulta_global = async () => {
 
   console.log("encontrado");

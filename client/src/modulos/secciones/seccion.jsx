@@ -22,7 +22,7 @@ export default function Seccion(props) {
         style={{ display: isLoading ? "none" : "block" }}
         src={datos.image}
         alt="será una imagen"
-        srcset=""
+      
       />
       {isLoading && (
         <img

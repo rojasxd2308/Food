@@ -9,7 +9,6 @@ import Secciones from "./modulos/secciones/secciones";
 import Detail from "./modulos/detail/detailSeccion";
 import Form from "./modulos/form/form";
 import Footer from "./modulos/footer/footer";
-import { NavLink } from "react-router-dom";
 import Home from "./modulos/Home/home";
 function App(props) {
   const { consulta_all } = props;
@@ -20,7 +19,7 @@ function App(props) {
     }).then(()=>{
       console.log(all.length);
     })
-  }, []);
+  }, [all.length, consulta_all]);
   return (
     <div className="App">
 

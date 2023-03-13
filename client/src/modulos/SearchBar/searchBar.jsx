@@ -56,17 +56,17 @@ function SearchBar(props) {
         <div className="secciones">
 
             <div className="direccion">
-         <NavLink exact to="/" className={(navData) => (navData.isActive ? "link_active" : 'none')}>
+         <NavLink exact="true" to="/" className={(navData) => (navData.isActive ? "link_active" : 'none')}>
             Inicio
          </NavLink>
             </div>
             <div className="direccion">
-         <NavLink exact to="/secciones" className={(navData) => (navData.isActive ? "link_active" : 'none')}>
+         <NavLink exact="true" to="/secciones" className={(navData) => (navData.isActive ? "link_active" : 'none')}>
             Secciones
          </NavLink>
             </div>
             <div className="direccion">
-         <NavLink exact to="/form" className={(navData) => (navData.isActive ? "link_active" : 'none')}>
+         <NavLink exact="true" to="/form" className={(navData) => (navData.isActive ? "link_active" : 'none')}>
             Nueva Receta
          </NavLink>
             </div>
