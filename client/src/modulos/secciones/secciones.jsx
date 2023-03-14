@@ -6,6 +6,7 @@ import { organizar,dividir } from "../../functions/search";
 
 
 import Paginacion from "../paginado/paginacion";
+import arr_res from "../../functions/arreglo_resultados";
 
 
 
@@ -14,18 +15,22 @@ function SearchBar(props) {
   const { all } = props;
   const [tempAll, setTempAll] = useState([]);
   const [tempDivided, setTempDivided] = useState([]);
+  const [lista, setLista] = useState([]);
   const [options, setOptions] = useState({
     ordenamientoH: "1",
     ordenamientoN: "0",
-    cantidad: "15",
+    cantidad: '15',
   });
+  useEffect(()=>{
+    setLista(arr_res(all.length))
+  },[all])
   const [paginate ,setPaginate] = useState({
     inicio: '1',
     espacio: '10'
   })
-
   useEffect(() => {
     if (all.length > 0) {
+      console.log(lista);
       const organizado = organizar(all, options);
       // arreglo temporal ya organizado
       setTempAll(organizado);
@@ -114,13 +119,12 @@ function SearchBar(props) {
 
         <label htmlFor="">Número de resultados</label>
         <select name="cantidad" id="" defaultValue={options.cantidad} onChange={handleOptions}>
-          <option value="10">10</option>
-          <option value="15" >
-            15
-          </option>
-          <option value="20">20</option>
-          <option value="40">40</option>
-          <option value="60">60</option>
+    
+          {lista.map((el_c)=>{
+            return (<option key={el_c} value={el_c}>{el_c}</option>)
+          })}
+
+            <option  value={'15'}>{'15'}</option>
         </select>
         </div>
     <div className="elemento">

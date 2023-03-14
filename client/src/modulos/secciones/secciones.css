@@ -66,6 +66,7 @@ ul.lista-dietas {
 }
 
 .seccion {
+    height: 300px;
     position: relative;
     /* Necesario para posicionar los datos */
     overflow: hidden;

@@ -3,24 +3,24 @@ import { useState } from 'react';
 export default function Paginacion({ options, paginate, handlePageClick }) {
     const [pagina_actual, setCurrentPage] = useState(1);
     const total_paginas = Math.ceil(options.cantidad / paginate.espacio);
-
+    const [divisor,setDivisor] = useState(true)
     const handlePrevClick = () => {
         if (pagina_actual > 1) {
             setCurrentPage(pagina_actual - 1);
-            handlePageClick({ selected: pagina_actual - 2 }); // La numeración de páginas empieza en cero, por eso se resta 2
+            handlePageClick({ selected: pagina_actual - 2 }); 
         }
     };
 
     const handleNextClick = () => {
         if (pagina_actual < total_paginas) {
             setCurrentPage(pagina_actual + 1);
-            handlePageClick({ selected: pagina_actual }); // La numeración de páginas empieza en cero, por eso no se resta nada
+            handlePageClick({ selected: pagina_actual }); 
         }
     };
 
     const handlePageNumberClick = (pageNumber) => {
         setCurrentPage(pageNumber);
-        handlePageClick({ selected: pageNumber - 1 }); // La numeración de páginas empieza en cero, por eso se resta 1
+        handlePageClick({ selected: pageNumber - 1 }); 
     };
 
     const secciones_navegacion = () => {
@@ -30,7 +30,25 @@ export default function Paginacion({ options, paginate, handlePageClick }) {
         }
         return pageNumbers;
     };
+    function render_numbers(number) {
+        if(number < (pagina_actual -2) || number > (pagina_actual +2 )) {
+         if (divisor) {
+            setDivisor(false);
+            return  <div>{"..."}</div>
+         } 
+        }else {
 
+      return ( <li
+            key={number}
+            className={`page-item ${pagina_actual === number ? 'selected' : ''}`}
+        >
+            <button className="page-link" onClick={() => handlePageNumberClick(number)}>
+                {number}
+            </button>
+        </li>)
+        }
+
+    }
     return (
         <div className="navigation">
             <ul className="pagination">
@@ -39,16 +57,8 @@ export default function Paginacion({ options, paginate, handlePageClick }) {
                         &lt; Anterior
                     </button>
                 </li>
-                {secciones_navegacion().map((pageNumber) => (
-                    <li
-                        key={pageNumber}
-                        className={`page-item ${pagina_actual === pageNumber ? 'selected' : ''}`}
-                    >
-                        <button className="page-link" onClick={() => handlePageNumberClick(pageNumber)}>
-                            {pageNumber}
-                        </button>
-                    </li>
-                ))}
+                {secciones_navegacion().map((pageNumber) => {return render_numbers(pageNumber)}
+            )}
                 <li className={`page-item ${pagina_actual === total_paginas ? 'disabled' : ''}`}>
                     <button className="page-link" onClick={handleNextClick}>
                         Siguiente &gt;

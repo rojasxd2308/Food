@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const { expect } = require('chai');
 const session = require('supertest-session');
 const app = require('../../src/app.js');
@@ -19,9 +18,14 @@ describe('Recipe routes', () => {
         }));
     beforeEach(() => Recipe.sync({ force: true })
         .then(() => Recipe.create(recipe)));
-    describe('GET /recipes', () => {
+    describe('GET /recipes/1', () => {
         it('should get 200', () =>
-            agent.get('/recipes').expect(200)
+            agent.get('/recipes/1').expect(200)
+        );
+    });
+    describe(' WRONG GET /recipes/1234', () => {
+        it('should get 200', () =>
+            agent.get('/recipes/1234').expect(500)
         );
     });
 });

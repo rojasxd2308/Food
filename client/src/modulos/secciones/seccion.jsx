@@ -31,10 +31,10 @@ export default function Seccion(props) {
           alt="cargando..."
         />
       )}
-      <h4>{datos.title}</h4>
+     {datos.title && (<h4 className="titulo">{datos.title}</h4>)}
       <div className="datos">
 
-      <h4>Nivel de salud{datos.healthScore}</h4>
+      <h4>Nivel de salud: {datos.healthScore}</h4>
       <ul className="lista-dietas">
         {datos.diets && datos.diets.map((el) => {
           return (<li key={el}>{el}</li> );

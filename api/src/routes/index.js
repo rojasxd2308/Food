@@ -3,11 +3,11 @@ const axios = require("axios");
 const { route } = require("../app");
 const { Diets, Recipe, Pasos, diets_recipe } = require("../db.js");
 const { conn } = require("../db");
-const fs = require("fs");
-const path = require("node:path");
 
-const { QueryTypes } = require("sequelize");
-const { stringify } = require("querystring");
+//const path = require("node:path");
+
+//const { QueryTypes } = require("sequelize");
+//const { stringify } = require("querystring");
 const router = Router();
 const API_KEY = "90d31cca822340a0911fb40d8f4fddca";
 const spoon = "https://api.spoonacular.com/recipes/complexSearch";
@@ -51,6 +51,9 @@ router.get("/recipes/:id", async(req, res) => {
     try {
         let resultado = await consultatotal();
         resultado = resultado.filter((dato) => dato.id == id);
+        if (resultado[0].length == 0) {
+            res.status(500).send("no hay datos sobre este id");
+        }
         res.json(resultado[0]);
     } catch (e) {
         console.log(e.message);
@@ -68,6 +71,7 @@ router.get("/recipes", async(req, res) => {
             });
             if (resultado.length > 0) {
                 console.log(resultado);
+                res.status(200)
                 res.json(resultado);
             } else {
                 res.json({ error: "no hay coincidencias" });
@@ -76,6 +80,7 @@ router.get("/recipes", async(req, res) => {
             res.json({ error: "error de conexion" });
         }
     } else {
+        res.status(200)
         res.json(resultado);
     }
 });
@@ -104,6 +109,7 @@ router.post("/recipes", async(req, res) => {
     const receta = req.body;
     const { image } = req.files;
     let id_nuevareceta = await insertando_Receta(receta, image);
+    res.status(200)
     res.json({...req.body, id: id_nuevareceta });
 });
 
